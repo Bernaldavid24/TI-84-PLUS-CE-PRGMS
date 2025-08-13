@@ -1,0 +1,73 @@
+ClrHome
+Disp "RSA ENCRYPTION"
+Disp " "
+
+If A=0 or B=0
+Then
+Disp "NO KEYS FOUND!"
+Disp "RUN KEYGEN FIRST"
+Stop
+End
+
+A→N
+B→E
+C→D
+
+Disp "PUBLIC KEY:"
+Disp "N =",N
+Disp "E =",E
+Disp " "
+
+Prompt M
+Disp " "
+
+If M≥N
+Then
+Disp "ERROR: MESSAGE TOO"
+Disp "LARGE FOR KEY SIZE"
+Disp "MAX MESSAGE:",N-1
+Stop
+End
+
+If M<1
+Then
+Disp "ERROR: MESSAGE MUST"
+Disp "BE POSITIVE INTEGER"
+Stop
+End
+
+M→R
+1→T
+E→F
+
+Lbl ENCRYPT
+If fPart(F/2)≠0
+Then
+R*T→T
+T-N*iPart(T/N)→T
+End
+R*R→R
+R-N*iPart(R/N)→R
+iPart(F/2)→F
+If F>0
+Goto ENCRYPT
+
+T→CIPHER
+
+ClrHome
+Disp "ENCRYPTION COMPLETE"
+Disp " "
+Disp "ORIGINAL MESSAGE:"
+Disp M
+Disp " "
+Disp "ENCRYPTED MESSAGE:"
+Disp CIPHER
+Disp " "
+Disp "VERIFICATION:"
+Disp "M^E mod N =",CIPHER
+
+CIPHER→Z
+
+Disp " "
+Disp "CIPHER STORED IN Z"
+Pause
