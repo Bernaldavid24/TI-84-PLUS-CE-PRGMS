@@ -1,0 +1,66 @@
+ClrHome
+Disp "RSA KEY GENERATION"
+Disp " "
+
+{2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97,101,103,107,109,113}→L₁
+
+Disp "SELECTING PRIMES..."
+Lbl PICKP
+randInt(1,dim(L₁))→I
+randInt(1,dim(L₁))→J
+L₁(I)→P
+L₁(J)→Q
+
+If P=Q or P*Q>9999
+Goto PICKP
+
+P*Q→N
+(P-1)*(Q-1)→φ
+
+3→E
+Lbl FINDE
+If E≥φ
+Then
+Disp "ERROR: E TOO LARGE"
+Stop
+End
+gcd(E,φ)→G
+If G≠1
+Then
+E+2→E
+Goto FINDE
+End
+
+1→D
+Lbl FINDD
+If fPart((E*D-1)/φ)=0
+Goto FOUNDKEY
+D+1→D
+If D>φ
+Then
+Disp "ERROR: NO D FOUND"
+Stop
+End
+Goto FINDD
+
+Lbl FOUNDKEY
+ClrHome
+Disp "RSA KEYS GENERATED"
+Disp " "
+Disp "PRIMES:"
+Disp "P =",P
+Disp "Q =",Q
+Disp " "
+Disp "PUBLIC KEY:"
+Disp "N =",N
+Disp "E =",E
+Disp " "
+Disp "PRIVATE KEY:"
+Disp "D =",D
+Disp " "
+Disp "STORE N,E,D IN MEMORY"
+Pause
+
+N→A
+E→B  
+D→C
