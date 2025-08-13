@@ -60,5 +60,7 @@ Security: Uses small primes for educational purposes only
 **Example Usage:**
 
 Run RSAKEYGEN → might generate N=323, E=5, D=29
+
 Run RSAENCRYPT → encrypt message "42" → get ciphertext "57"
+
 Run RSADECRYPT → decrypt "57" → recover "42"
