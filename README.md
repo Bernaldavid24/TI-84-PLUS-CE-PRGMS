@@ -53,8 +53,11 @@ Program recovers the original message
 **Important Notes:**
 
 Message size limit: Your message must be smaller than N
+
 Integer messages only: This implementation works with numbers, not text
+
 Key storage: Keys persist until calculator is reset or variables are cleared
+
 Security: Uses small primes for educational purposes only
 
 **Example Usage:**
